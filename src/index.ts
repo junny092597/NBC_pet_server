@@ -9,7 +9,7 @@ app.use(cors()); // CORS 미들웨어 적용
 const server = createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:3000", // 클라이언트 주소, 실제 주소로 변경 필요
+    origin: "https://nbc-pet.vercel.app/", // 클라이언트 주소, 실제 주소로 변경 필요
     methods: ["GET", "POST"],
     allowedHeaders: ["my-custom-header"],
     credentials: true
