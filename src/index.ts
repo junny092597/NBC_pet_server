@@ -16,13 +16,11 @@ const io = new Server(server, {
   }
 });
 
-// 온라인 사용자 정보를 저장할 배열, 각 객체는 소켓 ID와 닉네임을 포함
 let onlineUsers: { id: string; nickname: string; }[] = [];
 
 io.on('connection', (socket: Socket) => {
   console.log(`New client connected: ${socket.id}`);
   
-  // 새로운 연결 시 사용자 닉네임을 받기 위한 이벤트 리스너 추가
   socket.on('user nickname', (nickname) => {
     onlineUsers.push({ id: socket.id, nickname: nickname });
     io.emit('online users', onlineUsers.map(user => user.nickname)); // 닉네임 목록만 방송
